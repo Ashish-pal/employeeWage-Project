@@ -3,6 +3,7 @@ package com.bl.empwage;
 public class EmpMainClass {
     public static final int employeWage_per_hour = 20;
     public static final int employeWage_full_day = 8;
+    public static final int employeWage_PART_TIME_HOURS=8;
     public static void main(String[] args) {
         System.out.println("Welcome to employee wage project");
 
