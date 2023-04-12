@@ -1,43 +1,47 @@
 package com.bl.empwage;
 
-import java.util.Scanner;
-
 public class EmpMainClass {
-    public static final int employeWage_per_hour = 20;
-    public static final int employeWage_full_day = 8;
-    public static final int employeWage_PART_TIME_HOURS = 4;
-    public static final int working_days_per_month = 20;
-
     public static void main(String[] args) {
         System.out.println("Welcome to employee wage project");
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Enter part time hours employee works: ");
-        int part_time = sc.nextInt();
+        final int employeWage_per_hour = 20;
+        final int employeWage_full_day = 8;
+        final int employeWage_part_time_hours = 4;
+        final int working_days_per_month = 20;
+        final int max_working_hour_in_month = 100;
+        int total_working_hours = 0;
+        int total_working_days = 0;
+        int total_wage = 0;
         int attendance = (int) (Math.random() * 10) % 2;
-        if (attendance == 1) {
-            System.out.println("Employee is present");
-            int wage;
-            wage = employeWage_per_hour * employeWage_full_day;
-            System.out.println(wage);
-            wage = working_days_per_month * employeWage_full_day;
-            System.out.println(wage);
-            int total_hours_in_month = employeWage_per_hour * employeWage_full_day;
-            System.out.println(total_hours_in_month);
-            int total_wage = employeWage_per_hour * total_hours_in_month;
-            System.out.println(total_wage);
-            switch (part_time) {
-                case employeWage_full_day:
-                    wage = employeWage_per_hour * employeWage_full_day;
-                    System.out.println(wage);
-                    break;
-                case employeWage_PART_TIME_HOURS:
-                    wage = employeWage_per_hour * employeWage_PART_TIME_HOURS;
-                    System.out.println(wage);
-                    break;
-                default:
-                    System.out.println("Error: Invalid number of hours worked");
-            }
-        } else
-            System.out.println("Employee is absent");
+        switch (attendance) {
+            case 0:
+                System.out.println("Employee is Absent");
+                break;
+            case 1:
+                System.out.println("Employee is Present");
+                while (total_working_hours < max_working_hour_in_month && total_working_days < working_days_per_month) {
+                    int empType = (int) (Math.random() * 10) % 2;
+                    int empHours = 0;
+
+                    switch (empType) {
+                        case 0:
+                            empHours = employeWage_full_day;
+                            break;
+                        case 1:
+                            empHours = employeWage_part_time_hours;
+                            break;
+                        default:
+                            break;
+                    }
+                    int dailyWage = empHours * employeWage_per_hour;
+                    total_wage += dailyWage;
+                    total_working_hours += empHours;
+                    total_working_days++;
+                    System.out.println("Day " + total_working_days + " wage: " + dailyWage);
+                }
+                System.out.println("Total wage for " + total_working_days + " days of work: " + total_wage);
+                break;
+            default:
+                break;
+        }
     }
 }
