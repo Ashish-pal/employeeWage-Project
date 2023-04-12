@@ -5,7 +5,9 @@ import java.util.Scanner;
 public class EmpMainClass {
     public static final int employeWage_per_hour = 20;
     public static final int employeWage_full_day = 8;
-    public static final int employeWage_PART_TIME_HOURS=4;
+    public static final int employeWage_PART_TIME_HOURS = 4;
+    public static final int working_days_per_month = 20;
+
     public static void main(String[] args) {
         System.out.println("Welcome to employee wage project");
         Scanner sc = new Scanner(System.in);
@@ -17,7 +19,13 @@ public class EmpMainClass {
             int wage;
             wage = employeWage_per_hour * employeWage_full_day;
             System.out.println(wage);
-            switch (part_time){
+            wage = working_days_per_month * employeWage_full_day;
+            System.out.println(wage);
+            int total_hours_in_month = employeWage_per_hour * employeWage_full_day;
+            System.out.println(total_hours_in_month);
+            int total_wage = employeWage_per_hour * total_hours_in_month;
+            System.out.println(total_wage);
+            switch (part_time) {
                 case employeWage_full_day:
                     wage = employeWage_per_hour * employeWage_full_day;
                     System.out.println(wage);
@@ -29,8 +37,7 @@ public class EmpMainClass {
                 default:
                     System.out.println("Error: Invalid number of hours worked");
             }
-        }
-        else
+        } else
             System.out.println("Employee is absent");
     }
 }
