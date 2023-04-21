@@ -1,18 +1,26 @@
 package com.bl.empwage;
 
 public class EmpMainClass {
+    public static final int employeWage_per_hour = 20;
+    public static final int employeWage_full_day = 8;
+    public static final int employeWage_part_time_hours = 4;
+    public static final int working_days_per_month = 20;
+    public static final int max_working_hour_in_month = 100;
+
+    public int getAttendance() {
+        int attendance = (int) (Math.random() * 10) % 2;
+        return attendance;
+    }
+
     public static void main(String[] args) {
         System.out.println("Welcome to employee wage project");
-        final int employeWage_per_hour = 20;
-        final int employeWage_full_day = 8;
-        final int employeWage_part_time_hours = 4;
-        final int working_days_per_month = 20;
-        final int max_working_hour_in_month = 100;
         int total_working_hours = 0;
         int total_working_days = 0;
         int total_wage = 0;
-        int attendance = (int) (Math.random() * 10) % 2;
-        switch (attendance) {
+        // int attendance = (int) (Math.random() * 10) % 2;
+        EmpMainClass attendanceObj = new EmpMainClass();
+        int attendanceType = attendanceObj.getAttendance();
+        switch (attendanceType) {
             case 0:
                 System.out.println("Employee is Absent");
                 break;
